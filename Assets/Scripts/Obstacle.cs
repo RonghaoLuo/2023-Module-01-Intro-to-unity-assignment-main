@@ -7,7 +7,7 @@ public class Obstacle : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        _player = FindAnyObjectByType<PlayerControl>();
     }
 
     // Update is called once per frame
@@ -19,6 +19,6 @@ public class Obstacle : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log(gameObject.name + " was hit by " + collision.gameObject.name);
-        StartCoroutine(_player.ShowPlayerTopText("BANG"));
+        //StartCoroutine(_player.ShowPlayerTopText("BANG"));
     }
 }

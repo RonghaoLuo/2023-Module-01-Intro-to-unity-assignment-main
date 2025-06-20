@@ -9,7 +9,7 @@ public class Collectible : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        _gameManager = FindAnyObjectByType<GameManager>();
     }
 
     // Update is called once per frame

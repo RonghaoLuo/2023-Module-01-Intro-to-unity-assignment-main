@@ -76,19 +76,19 @@ public class PlayerControl : MonoBehaviour
         canJump = false;
     }
 
-    /// <summary>
-    /// Shows a text above the Player
-    /// </summary>
-    /// <param name="text"></param>
-    public IEnumerator ShowPlayerTopText(string text)
-    {
-        // Clone
-        TextMeshProUGUI playerTopTextdClone = Instantiate(_playerTopTextPrefab, transform);
-        // Position
-        playerTopTextdClone.transform.position = _playerTop.position;
-        // Set the text
-        playerTopTextdClone.text = text;
-        yield return new WaitForSeconds(1);
-        //Destroy(playerTopTextdClone );
-    }
+    ///// <summary>
+    ///// Shows a text above the Player
+    ///// </summary>
+    ///// <param name="text"></param>
+    //public IEnumerator ShowPlayerTopText(string text)
+    //{
+    //    // Clone
+    //    TextMeshProUGUI playerTopTextdClone = Instantiate(_playerTopTextPrefab, transform);
+    //    // Position
+    //    playerTopTextdClone.transform.position = _playerTop.position;
+    //    // Set the text
+    //    playerTopTextdClone.text = text;
+    //    yield return new WaitForSeconds(1);
+    //    //Destroy(playerTopTextdClone );
+    //}
 }
