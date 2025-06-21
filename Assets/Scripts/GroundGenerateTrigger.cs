@@ -2,10 +2,14 @@ using UnityEngine;
 
 public class GroundGenerateTrigger : MonoBehaviour
 {
+    [SerializeField] private GameObject _thisGround;
+    
+    private GameManager _gameManager;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        _gameManager = FindAnyObjectByType<GameManager>();
     }
 
     // Update is called once per frame
@@ -20,23 +24,13 @@ public class GroundGenerateTrigger : MonoBehaviour
         {
             if (gameObject.name == "GroundLeftGenerateTrigger")
             {
-                GenerateGroundOnLeft();
+                _gameManager.GenerateGroundOnLeftOf(_thisGround);
             }
             else if (gameObject.name == "GroundRightGenerateTrigger")
             {
-                GenerateGroundOnRight();
+                _gameManager.GenerateGroundOnRightOf(_thisGround);
             }
             gameObject.SetActive(false);
         }
-    }
-
-    private void GenerateGroundOnLeft()
-    {
-
-    }
-
-    private void GenerateGroundOnRight()
-    {
-
     }
 }

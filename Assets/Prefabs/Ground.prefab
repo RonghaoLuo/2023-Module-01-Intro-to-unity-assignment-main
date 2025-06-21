@@ -16,7 +16,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1319993088796182206
 Transform:
@@ -91,6 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbfd54d88845d7e49ab2ce6e183c4d70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _thisGround: {fileID: 1157810469363278443}
 --- !u!1 &1157810469363278443
 GameObject:
   m_ObjectHideFlags: 0
@@ -102,6 +103,7 @@ GameObject:
   - component: {fileID: 1589703252636204868}
   - component: {fileID: 2148695807252904344}
   - component: {fileID: 4169352183235942424}
+  - component: {fileID: 3764645028523082585}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Ground
@@ -228,6 +230,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 20.24, y: 1.01}
   m_EdgeRadius: 0
+--- !u!114 &3764645028523082585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1157810469363278443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1f99eff8ad0d73458be5fc752e15a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _leftGenTrigger: {fileID: 922100819797522620}
+  _rightGenTrigger: {fileID: 3805031052274566299}
 --- !u!1 &3805031052274566299
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,7 +260,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8764094724475610661
 Transform:
@@ -319,6 +335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbfd54d88845d7e49ab2ce6e183c4d70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _thisGround: {fileID: 1157810469363278443}
 --- !u!1 &7033909482679693370
 GameObject:
   m_ObjectHideFlags: 0
@@ -335,7 +352,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2072635400388421298
 Transform:
