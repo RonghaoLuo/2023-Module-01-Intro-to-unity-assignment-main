@@ -40,8 +40,13 @@ public class GameManager : MonoBehaviour
         GameObject newGround = Instantiate(_groundPrefab, _grounds.transform);
         // set it to correct coord
         newGround.transform.position = NewGroundPos;
-        // disable the right gen trigger of the new ground
-        newGround.GetComponent<Ground>().DisableRightGenTrigger();
+        // save the reference to the ground script
+        Ground newGroundCompGround = newGround.GetComponent<Ground>();
+        // disable the right gen trigger of the new ground; 
+        newGroundCompGround.DisableRightGenTrigger();
+
+        GeneratePickups(newGround);
+        GenerateObstacles();
     }
 
     public void GenerateGroundOnRightOf(GameObject ground)
@@ -55,5 +60,15 @@ public class GameManager : MonoBehaviour
         newGround.transform.position = NewGroundPos;
         // disable the right gen trigger of the new ground
         newGround.GetComponent<Ground>().DisableLeftGenTrigger();
+    }
+
+    private void GeneratePickups(GameObject ground)
+    {
+        // generate randomly and fall on the ground
+    }
+
+    private void GenerateObstacles()
+    {
+        // generate randomly on the ground
     }
 }
