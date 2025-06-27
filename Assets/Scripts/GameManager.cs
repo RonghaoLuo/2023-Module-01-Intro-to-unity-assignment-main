@@ -6,6 +6,14 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private PlayerControl _playerControl;
     [SerializeField] private GameObject _grounds;
+    [SerializeField] private int _numOfObstacles = 1;
+    [SerializeField] private int _numOfCollectibles = 1;
+
+    // for the ground
+    public float generatesPosXMin = -9f;
+    public float generatesPosXMax = 9f;
+    public float obstaclesNewPosY = -4.42f;
+    public float collectiblesNewPosY = 0f;
 
     // Prefabs
     [SerializeField] private GameObject _groundPrefab;
@@ -42,11 +50,13 @@ public class GameManager : MonoBehaviour
         newGround.transform.position = NewGroundPos;
         // save the reference to the ground script
         Ground newGroundCompGround = newGround.GetComponent<Ground>();
+        // connect to the game manager
+        newGroundCompGround.ConnectToGameManager();
         // disable the right gen trigger of the new ground; 
         newGroundCompGround.DisableRightGenTrigger();
-
-        GeneratePickups(newGround);
-        GenerateObstacles();
+        // generate obstacles and collectibles
+        newGroundCompGround.GenerateObstacles(_numOfObstacles);
+        newGroundCompGround.GenerateCollectibles(_numOfCollectibles);
     }
 
     public void GenerateGroundOnRightOf(GameObject ground)
@@ -58,17 +68,14 @@ public class GameManager : MonoBehaviour
         GameObject newGround = Instantiate(_groundPrefab, _grounds.transform);
         // set it to correct coord
         newGround.transform.position = NewGroundPos;
+        // save the reference to the ground script
+        Ground newGroundCompGround = newGround.GetComponent<Ground>();
+        // connect to the game manager
+        newGroundCompGround.ConnectToGameManager();
         // disable the right gen trigger of the new ground
-        newGround.GetComponent<Ground>().DisableLeftGenTrigger();
-    }
-
-    private void GeneratePickups(GameObject ground)
-    {
-        // generate randomly and fall on the ground
-    }
-
-    private void GenerateObstacles()
-    {
-        // generate randomly on the ground
+        newGroundCompGround.DisableLeftGenTrigger();
+        // generate obstacles and collectibles
+        newGroundCompGround.GenerateObstacles(_numOfObstacles);
+        newGroundCompGround.GenerateCollectibles(_numOfCollectibles);
     }
 }

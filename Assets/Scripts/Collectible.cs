@@ -18,7 +18,17 @@ public class Collectible : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    Debug.Log(gameObject.name + " was hit by " + collision.gameObject.name);
+    //    if (collision.gameObject.CompareTag("Player"))
+    //    {
+    //        _gameManager.CollectCoin(_worth);
+    //        Destroy(gameObject);
+    //    }
+    //}
+
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log(gameObject.name + " was hit by " + collision.gameObject.name);
         if (collision.gameObject.CompareTag("Player"))

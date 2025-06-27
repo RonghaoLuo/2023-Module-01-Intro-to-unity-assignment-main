@@ -244,6 +244,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _leftGenTrigger: {fileID: 922100819797522620}
   _rightGenTrigger: {fileID: 3805031052274566299}
+  _gameManager: {fileID: 0}
+  _obstaclePrefab: {fileID: 4999608058919209378, guid: ca8145ebde15fac4ab337a5f0fe6527b, type: 3}
+  _collectiblePrefab: {fileID: 3878880724016577679, guid: dde7599296681164b86eef1975e2b395, type: 3}
 --- !u!1 &3805031052274566299
 GameObject:
   m_ObjectHideFlags: 0
