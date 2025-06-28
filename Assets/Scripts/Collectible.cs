@@ -33,8 +33,9 @@ public class Collectible : MonoBehaviour
         Debug.Log(gameObject.name + " was hit by " + collision.gameObject.name);
         if (collision.gameObject.CompareTag("Player"))
         {
-            _gameManager.CollectCoin(_worth);
             Destroy(gameObject);
+
+            _gameManager.AddScore(_worth);
         }
     }
 }

@@ -2,12 +2,17 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private int _collectedCoins = 0;
-
-    [SerializeField] private PlayerControl _playerControl;
-    [SerializeField] private GameObject _grounds;
+    [SerializeField] private int _score = 0;
     [SerializeField] private int _numOfObstacles = 1;
     [SerializeField] private int _numOfCollectibles = 1;
+
+    [SerializeField] private PlayerControl _player;
+    [SerializeField] private GameObject _grounds;
+    [SerializeField] private UIGameplay _gameplayUI;
+    [SerializeField] private UIGameOver _gameOverUI;
+
+    private float _timeElapsed = 0;
+    private bool isGameOver;
 
     // for the ground
     public float generatesPosXMin = -9f;
@@ -21,23 +26,22 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        _gameplayUI.UpdateScoreText(_score);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (!isGameOver)
+        {
+            _timeElapsed += Time.deltaTime;
+        }
     }
 
     /// <summary>
     /// Increases the number of collected coins by <paramref name="coins"/>
     /// </summary>
     /// <param name="coins"></param>
-    public void CollectCoin(int coins)
-    {
-        _collectedCoins += coins;
-    }
 
     public void GenerateGroundOnLeftOf(GameObject ground)
     {
@@ -77,5 +81,36 @@ public class GameManager : MonoBehaviour
         // generate obstacles and collectibles
         newGroundCompGround.GenerateObstacles(_numOfObstacles);
         newGroundCompGround.GenerateCollectibles(_numOfCollectibles);
+    }
+
+    public void AddScore(int worth)
+    {
+        _score += worth;
+        _gameplayUI.UpdateScoreText(_score);
+    }
+
+    public void GameOver()
+    {
+        isGameOver = true;
+
+        _player.gameObject.SetActive(false);
+        _gameplayUI.gameObject.SetActive(false);
+
+        _gameOverUI.gameObject.SetActive(true);
+    }
+
+    public int GetScore()
+    {
+        return _score;
+    }
+
+    public float GetScoresPerSec()
+    {
+        return _score / _timeElapsed;
+    }
+
+    public float GetTimeElapsed()
+    {
+        return _timeElapsed;
     }
 }
