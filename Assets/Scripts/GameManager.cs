@@ -36,6 +36,9 @@ public class GameManager : MonoBehaviour
         {
             _timeElapsed += Time.deltaTime;
         }
+
+        _numOfCollectibles = (int) _timeElapsed / 10;
+        _numOfObstacles = (int) _timeElapsed / 10;
     }
 
     /// <summary>
