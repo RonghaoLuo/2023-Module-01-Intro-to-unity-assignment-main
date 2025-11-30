@@ -1,0 +1,1 @@
+J:\Contents\Unity Projects\2023-Module-01-Intro-to-unity-assignment-main\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\cxx\RelWithDebInfo\2b202y45\obj\armeabi-v7a
