@@ -8,6 +8,7 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private Animator _myAnimator;
     [SerializeField] private SpriteRenderer _mySpriteRenderer;
     [SerializeField] private Transform _playerTop;
+    [SerializeField] private HeldButton _leftButton, _rightButton, _jumpButton;
 
     [SerializeField] private float _jumpForce = 1f;
     [SerializeField] private float _horizontalSpeed = 1f;
@@ -34,14 +35,20 @@ public class PlayerControl : MonoBehaviour
         // Movements
         //      Jump
         //transform.position += transform.up * Input.GetAxis("Jump") * Time.deltaTime * _jumpSpeed;
-        if (Input.GetKey(KeyCode.Space) && canJump)
+        if ((Input.GetKey(KeyCode.Space) || _jumpButton.isHeld) && canJump)
         {
             Jump();
         }
         //      Running
-        _horizontalInput = Input.GetAxis("Horizontal");
+        float keyboardHorizontalInput = Input.GetAxisRaw("Horizontal");
+        float touchHorizontalInput = 0;
+        if (_leftButton.isHeld) { touchHorizontalInput -= 1; }
+        if (_rightButton.isHeld) { touchHorizontalInput += 1; }
+
+        _horizontalInput = keyboardHorizontalInput != 0? keyboardHorizontalInput: 
+            touchHorizontalInput;
         transform.position += transform.right * _horizontalInput * Time.deltaTime * _horizontalSpeed;
-        if (Input.GetButton("Horizontal"))
+        if (_horizontalInput != 0)
         {
             isRunning = true;
         }
@@ -53,12 +60,12 @@ public class PlayerControl : MonoBehaviour
         //      Running
         _myAnimator.SetBool("isRunning", isRunning);
         //      Sprite Direction
-        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+        if (_horizontalInput > 0)
         {
             facingRight = true;
             _mySpriteRenderer.flipX = false;
         }
-        else if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+        else if (_horizontalInput < 0)
         {
             facingRight= false;
             _mySpriteRenderer.flipX = true;
